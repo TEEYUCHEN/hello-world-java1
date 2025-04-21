@@ -1,14 +1,19 @@
+// This is build.gradle file
+//set JAVA_HOME=C:\Program Files\Java\jdk-1.8
+//set PATH=%JAVA_HOME%\bin;%PATH%
+//
 apply plugin: 'java'
-apply plugin:'jacoco'
-jacoco {
-    toolVersion = "0.8.7"
-}
+apply plugin:'jacoco' 
+jacoco { 
+    toolVersion = "0.8.7" 
+    }
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 group = 'com.example'
 version = 'V1'
+
 repositories {
     mavenCentral()
 }
@@ -18,7 +23,7 @@ dependencies {
 }
 
 test {
-    // Specify the directory containings test classes
+    // Specify the directory containing test classes
     testClassesDirs = sourceSets.test.output.classesDirs
 
     // Optionally configure test options
@@ -31,7 +36,7 @@ test {
 
  jar {
     manifest {
-        attributes 'Main-Class': 'com.example.Main'        
+        attributes 'Main-Class': 'com.example.HelloWorld'        
     }
 
     from sourceSets.main.output  // Include compiled classes in the JAR
@@ -39,10 +44,13 @@ test {
     destinationDirectory = file('build/libs')  // Output directory for the JAR file
 }
 
-jacocoTestReport {
-    dependsOn test
-    reports {
-        xml.required = true
-        html.required = true
-    }
+jacocoTestReport 
+{ dependsOn test 
+reports { 
+    xml.required = true 
+    html.required = true 
+    } 
 }
+
+
+
